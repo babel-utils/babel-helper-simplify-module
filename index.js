@@ -39,7 +39,10 @@ function explodedToStatements(exploded /*: Object */) {
       specifier = t.importSpecifier(local, external);
     }
 
-    statements.push(t.importDeclaration([specifier], source));
+    let declaration = t.importDeclaration([specifier], source);
+    declaration.importKind = item.kind;
+
+    statements.push(declaration);
   });
 
   exploded.statements.forEach(item => {

@@ -160,9 +160,9 @@ babel-core@^6.0.0, babel-core@^6.24.1:
     slash "^1.0.0"
     source-map "^0.5.0"
 
-babel-explode-module@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/babel-explode-module/-/babel-explode-module-1.1.0.tgz#e4ad4dad1e4f8b707a8e0d74a119887675040cb0"
+babel-explode-module@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/babel-explode-module/-/babel-explode-module-1.2.0.tgz#3b3930731950cc2920d70150de721db7e041c4a9"
   dependencies:
     babel-types "^6.24.1"
 

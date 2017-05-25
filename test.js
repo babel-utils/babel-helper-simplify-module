@@ -78,6 +78,36 @@ pluginTester({
       title: 'import namespace',
       code: 'import * as a from "b";',
       output: 'import * as a from "b";',
-    }
+    },
+    {
+      title: 'import type default',
+      code: 'import type a from "b";',
+      output: 'import type a from "b";',
+    },
+    {
+      title: 'import type named',
+      code: 'import type { a } from "b";',
+      output: 'import type { a } from "b";',
+    },
+    {
+      title: 'import type inner',
+      code: 'import { type a } from "b";',
+      output: 'import type { a } from "b";',
+    },
+    {
+      title: 'import typeof default',
+      code: 'import typeof a from "b";',
+      output: 'import typeof a from "b";',
+    },
+    {
+      title: 'import typeof named',
+      code: 'import typeof { a } from "b";',
+      output: 'import typeof { a } from "b";',
+    },
+    {
+      title: 'import typeof inner',
+      code: 'import { typeof a } from "b";',
+      output: 'import typeof { a } from "b";',
+    },
   ],
 });
