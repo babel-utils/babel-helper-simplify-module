@@ -1,7 +1,7 @@
 // @flow
 'use strict';
 
-const simplifyModule = require('./');
+const {simplifyModule} = require('./');
 const createBabylonOptions = require('babylon-options');
 const pluginTester = require('babel-plugin-tester');
 

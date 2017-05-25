@@ -24,15 +24,8 @@ function toModuleSpecifierValues(specifier) {
   };
 }
 
-function simplifyModule(path /*: Path */) {
-  if (!path.isProgram()) {
-    throw new Error(
-      `Must call simplifyModule() with Program node, passed: ${path.type}`
-    );
-  }
-
-  let exploded = explodeModule(path.node);
-  let body = [];
+function explodedToStatements(exploded /*: Object */) {
+  let statements = [];
 
   exploded.imports.forEach(item => {
     let {local, external, source} = toModuleSpecifierValues(item);
@@ -46,11 +39,11 @@ function simplifyModule(path /*: Path */) {
       specifier = t.importSpecifier(local, external);
     }
 
-    body.push(t.importDeclaration([specifier], source));
+    statements.push(t.importDeclaration([specifier], source));
   });
 
   exploded.statements.forEach(item => {
-    body.push(item);
+    statements.push(item);
   });
 
   exploded.exports.forEach(item => {
@@ -66,14 +59,30 @@ function simplifyModule(path /*: Path */) {
       declaration = t.exportNamedDeclaration(null, [specifier], source);
     }
 
-    body.push(declaration);
+    statements.push(declaration);
   });
 
+  return statements;
+}
+
+function simplifyModule(path /*: Path */) {
+  if (!path.isProgram()) {
+    throw new Error(
+      `Must call simplifyModule() with Program node, passed: ${path.type}`
+    );
+  }
+
+  let exploded = explodeModule(path.node);
+  let statements = explodedToStatements(exploded);
+
   let program = Object.assign({}, path.node, {
-    body: body,
+    body: statements,
   });
 
   path.replaceWith(program);
 }
 
-module.exports = simplifyModule;
+module.exports = {
+  explodedToStatements,
+  simplifyModule,
+};

@@ -3,7 +3,7 @@
 > Transform module using [babel-explode-module](https://github.com/babel-utils/babel-explode-module) to have a simpler structure
 
 ```js
-import simplifyModule from 'babel-helper-simplify-module';
+import {simplifyModule} from 'babel-helper-simplify-module';
 
 simplifyModule(programPath);
 ```
@@ -40,4 +40,26 @@ export default _default;
 export { baz };
 export { bat };
 export * from "bam";
+```
+
+## API
+
+### `explodedToStatements(exploded)`
+
+```js
+import explodeModule from 'babel-explode-module';
+import {explodedToStatements} from 'babel-helper-simplify-module';
+
+let exploded = explodeModule(node);
+let statements = explodedToStatements(exploded);
+```
+
+### `simplifyModule(path)`
+
+> This mutates the program.
+
+```js
+import {simplifyModule} from 'babel-helper-simplify-module';
+
+simplifyModule(programPath);
 ```
