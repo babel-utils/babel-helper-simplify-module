@@ -9,6 +9,7 @@
   "scripts": {
     "test": "jest"
   },
+  "files": [],
   "dependencies": {
     "babel-explode-module": "^1.2.0"
   },
