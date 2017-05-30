@@ -25,7 +25,7 @@ pluginTester({
   babelOptions: {
     parserOpts: createBabylonOptions({
       stage: 0,
-      plugins: ['flow']
+      plugins: ['flow'],
     }),
   },
   tests: [
@@ -82,7 +82,7 @@ pluginTester({
     {
       title: 'import type default',
       code: 'import type a from "b";',
-      output: 'import type a from "b";',
+      output: 'import type { a } from "b";',
     },
     {
       title: 'import type named',
@@ -97,7 +97,7 @@ pluginTester({
     {
       title: 'import typeof default',
       code: 'import typeof a from "b";',
-      output: 'import typeof a from "b";',
+      output: 'import typeof { a } from "b";',
     },
     {
       title: 'import typeof named',

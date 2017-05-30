@@ -11,7 +11,7 @@
   },
   "files": [],
   "dependencies": {
-    "babel-explode-module": "^1.2.0"
+    "babel-explode-module": "^1.3.2"
   },
   "devDependencies": {
     "babel-plugin-tester": "^3.0.0",

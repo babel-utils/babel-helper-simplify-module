@@ -1,6 +1,6 @@
 // @flow
 'use strict';
-const explodeModule = require('babel-explode-module').default;
+const explodeModule = require('babel-explode-module');
 const t = require('babel-types');
 
 /*::
