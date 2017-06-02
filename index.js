@@ -42,6 +42,8 @@ function explodedToStatements(exploded /*: Object */) {
     let declaration = t.importDeclaration([specifier], source);
     declaration.importKind = item.kind;
 
+    declaration.loc = specifier.loc = item.loc;
+
     statements.push(declaration);
   });
 
@@ -59,8 +61,11 @@ function explodedToStatements(exploded /*: Object */) {
       declaration = t.exportAllDeclaration(source);
     } else {
       let specifier = t.exportSpecifier(local, external);
+      specifier.loc = item.loc;
       declaration = t.exportNamedDeclaration(null, [specifier], source);
     }
+
+    declaration.loc = item.loc;
 
     statements.push(declaration);
   });

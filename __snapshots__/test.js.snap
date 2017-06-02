@@ -1,0 +1,463 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`1. statement 1`] = `
+"
+var a = 1;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+var a = 1;\`Path: Program (1:0,1:10)
+  body:
+    - VariableDeclaration (1:4,1:9)
+        declarations:
+          - VariableDeclarator (1:4,1:9)
+              id: Identifier (1:4,1:5)
+                name: 'a'
+              init: NumericLiteral (1:8,1:9)
+                extra:
+                  raw: '1'
+                  rawValue: 1
+                value: 1
+        kind: 'var'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`2. statement rewriting 1`] = `
+"
+var a = 1, b = 2;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+var a = 1;var b = 2;\`Path: Program (1:0,1:17)
+  body:
+    - VariableDeclaration (1:4,1:9)
+        declarations:
+          - VariableDeclarator (1:4,1:9)
+              id: Identifier (1:4,1:5)
+                name: 'a'
+              init: NumericLiteral (1:8,1:9)
+                extra:
+                  raw: '1'
+                  rawValue: 1
+                value: 1
+        kind: 'var'
+    - VariableDeclaration (1:11,1:16)
+        declarations:
+          - VariableDeclarator (1:11,1:16)
+              id: Identifier (1:11,1:12)
+                name: 'b'
+              init: NumericLiteral (1:15,1:16)
+                extra:
+                  raw: '2'
+                  rawValue: 2
+                value: 2
+        kind: 'var'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`3. export named 1`] = `
+"
+export var a = 1;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+var a = 1;export { a };
+\`Path: Program (1:0,1:17)
+  body:
+    - VariableDeclaration (1:11,1:16)
+        declarations:
+          - VariableDeclarator (1:11,1:16)
+              id: Identifier (1:11,1:12)
+                name: 'a'
+              init: NumericLiteral (1:15,1:16)
+                extra:
+                  raw: '1'
+                  rawValue: 1
+                value: 1
+        kind: 'var'
+    - ExportNamedDeclaration (1:7,1:17)
+        declaration: null
+        source: null
+        specifiers:
+          - ExportSpecifier (1:7,1:17)
+              exported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`4. export default 1`] = `
+"
+export default 1;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const _default = 1;export default _default;
+\`Path: Program (1:0,1:17)
+  body:
+    - VariableDeclaration (1:15,1:16)
+        declarations:
+          - VariableDeclarator (1:15,1:16)
+              id: Identifier
+                name: '_default'
+              init: NumericLiteral (1:15,1:16)
+                extra:
+                  raw: '1'
+                  rawValue: 1
+                value: 1
+        kind: 'const'
+    - ExportDefaultDeclaration (1:0,1:17)
+        declaration: Identifier
+          name: '_default'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`5. export named from 1`] = `
+"
+export { a } from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export { a } from \\"b\\";
+\`Path: Program (1:0,1:22)
+  body:
+    - ExportNamedDeclaration (1:9,1:10)
+        declaration: null
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ExportSpecifier (1:9,1:10)
+              exported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`6. export default from 1`] = `
+"
+export default from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export { default } from \\"b\\";
+\`Path: Program (1:0,1:24)
+  body:
+    - ExportNamedDeclaration (1:7,1:14)
+        declaration: null
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ExportSpecifier (1:7,1:14)
+              exported: Identifier
+                name: 'default'
+              local: Identifier
+                name: 'default'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`7. export all from 1`] = `
+"
+export * from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export * from \\"b\\";
+\`Path: Program (1:0,1:18)
+  body:
+    - ExportAllDeclaration (1:0,1:18)
+        source: StringLiteral
+          value: 'b'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`8. import default 1`] = `
+"
+import a from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import a from \\"b\\";
+\`Path: Program (1:0,1:18)
+  body:
+    - ImportDeclaration (1:7,1:8)
+        importKind: 'value'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportDefaultSpecifier (1:7,1:8)
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`9. import named 1`] = `
+"
+import { a } from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { a } from \\"b\\";
+\`Path: Program (1:0,1:22)
+  body:
+    - ImportDeclaration (1:9,1:10)
+        importKind: 'value'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportSpecifier (1:9,1:10)
+              imported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`10. import namespace 1`] = `
+"
+import * as a from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as a from \\"b\\";
+\`Path: Program (1:0,1:23)
+  body:
+    - ImportDeclaration (1:7,1:13)
+        importKind: 'value'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportNamespaceSpecifier (1:7,1:13)
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`11. import type default 1`] = `
+"
+import type a from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import type { a } from \\"b\\";
+\`Path: Program (1:0,1:23)
+  body:
+    - ImportDeclaration (1:12,1:13)
+        importKind: 'type'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportSpecifier (1:12,1:13)
+              imported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`12. import type named 1`] = `
+"
+import type { a } from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import type { a } from \\"b\\";
+\`Path: Program (1:0,1:27)
+  body:
+    - ImportDeclaration (1:14,1:15)
+        importKind: 'type'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportSpecifier (1:14,1:15)
+              imported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`13. import type inner 1`] = `
+"
+import { type a } from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import type { a } from \\"b\\";
+\`Path: Program (1:0,1:27)
+  body:
+    - ImportDeclaration (1:9,1:15)
+        importKind: 'type'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportSpecifier (1:9,1:15)
+              imported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`14. import typeof default 1`] = `
+"
+import typeof a from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import typeof { a } from \\"b\\";
+\`Path: Program (1:0,1:25)
+  body:
+    - ImportDeclaration (1:14,1:15)
+        importKind: 'typeof'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportSpecifier (1:14,1:15)
+              imported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`15. import typeof named 1`] = `
+"
+import typeof { a } from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import typeof { a } from \\"b\\";
+\`Path: Program (1:0,1:29)
+  body:
+    - ImportDeclaration (1:16,1:17)
+        importKind: 'typeof'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportSpecifier (1:16,1:17)
+              imported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
+
+exports[`16. import typeof inner 1`] = `
+"
+import { typeof a } from \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import typeof { a } from \\"b\\";
+\`Path: Program (1:0,1:29)
+  body:
+    - ImportDeclaration (1:9,1:17)
+        importKind: 'typeof'
+        source: StringLiteral
+          value: 'b'
+        specifiers:
+          - ImportSpecifier (1:9,1:17)
+              imported: Identifier
+                name: 'a'
+              local: Identifier
+                name: 'a'
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
