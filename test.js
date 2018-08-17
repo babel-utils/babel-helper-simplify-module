@@ -105,5 +105,9 @@ pluginTester({
       title: 'import typeof inner',
       code: 'import { typeof a } from "b";',
     },
+    {
+      title: 'import side effects',
+      code: 'import "b";',
+    },
   ],
 });

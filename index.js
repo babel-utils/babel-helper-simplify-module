@@ -31,6 +31,11 @@ function explodedToStatements(exploded /*: Object */) {
     let {local, external, source} = toModuleSpecifierValues(item);
     let specifier;
 
+    // If import is for side effects, it has no specifiers.
+    if (!external && !local) {
+      return;
+    }
+
     if (!external) {
       specifier = t.importNamespaceSpecifier(local);
     } else if (item.external === 'default') {

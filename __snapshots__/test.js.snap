@@ -461,3 +461,20 @@ import typeof { a } from \\"b\\";
 \`;
 "
 `;
+
+exports[`17. import side effects 1`] = `
+"
+import \\"b\\";
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+\`Path: Program (1:0,1:11)
+  body: []
+  directives: []
+  innerComments: []
+  leadingComments: []
+  sourceType: 'module'
+  trailingComments: []
+\`;
+"
+`;
