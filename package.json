@@ -1,7 +1,7 @@
 {
   "name": "babel-helper-simplify-module",
   "description": "Transform module using babel-explode-module to have a simpler structure",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "main": "index.js",
   "repository": "git@github.com:thejameskyle/babel-helper-simplify-module.git",
   "author": "James Kyle <me@thejameskyle.com>",
